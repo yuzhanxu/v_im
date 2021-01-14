@@ -31,7 +31,7 @@
 > 2. 使用yarn 安装依赖，npm 不是很好用，尝试过，都不能打包成功。如果yarn 不能安装依赖成功，可以多试几次，或者翻墙后再打包！
 > 3. 基于 t-io websocket 协议， 据说能支持百万级并发，但是此项目并没有进行此方面的测试，还请知晓 ！
 
-![logo](build/icons/icon.png)
+![logo](https://gitee.com/lele-666/V-IM/raw/master/V-IM-PC/public/static/icon.ico)
 
 
 ### 截图
