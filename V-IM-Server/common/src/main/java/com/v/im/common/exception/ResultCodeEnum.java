@@ -26,6 +26,7 @@ public enum ResultCodeEnum implements BaseErrorInfoInterface  {
     WX_NO_BIND_ERROR("802","未绑定的用户"),
     TIME_ERROR("409","客户端时间不对"),
     SIGN_NOT_MATCH("408","签名不匹配!"),
+    DUPLICATE_KEY_EXCEPTION("701","主键重复!"),
     ;
 
     /**

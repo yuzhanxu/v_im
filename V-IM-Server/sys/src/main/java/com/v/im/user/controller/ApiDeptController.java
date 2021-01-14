@@ -19,14 +19,14 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/dept")
-public class DeptController {
+public class ApiDeptController {
 
     /**
      * 顶级的 PARENT_ID
      */
     public static final String DEFAULT_PARENT_ID = "0";
 
-    private final Logger logger = LoggerFactory.getLogger(DeptController.class);
+    private final Logger logger = LoggerFactory.getLogger(ApiDeptController.class);
 
     @Resource
     @Qualifier(value = "imDeptService")
@@ -59,7 +59,7 @@ public class DeptController {
      * @param parentId 父id
      * @return ImDeptList
      */
-    @PostMapping("list")
+    @GetMapping("list")
     public List<ImDept> list(String parentId) {
         QueryWrapper<ImDept> wrapper = new QueryWrapper<>();
         if (StrUtil.isNotBlank(parentId)) {
@@ -76,8 +76,8 @@ public class DeptController {
      * @param id deptId
      * @return ImDept
      */
-    @PostMapping("get")
-    public ImDept get(String id) {
+    @GetMapping("{id}")
+    public ImDept get(@PathVariable String id) {
         return iImDeptService.getById(id);
     }
 
@@ -87,10 +87,11 @@ public class DeptController {
      * @param deptId deptId
      * @return ImDept
      */
-    @PostMapping("users")
-    public List<ImUser> users(String deptId) {
+    @GetMapping("userList")
+    public List<ImUser> userList(String deptId) {
         QueryWrapper<ImUser> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("dept_id",deptId);
+        queryWrapper.orderByAsc("id");
         return iImUserService.list(queryWrapper);
     }
 
@@ -100,7 +101,7 @@ public class DeptController {
      * @param id deptId
      * @return boolean
      */
-    @PostMapping("delete")
+    @PutMapping("delete")
     public boolean delete(String id) {
         logger.debug("delete dept :" + id);
         return iImDeptService.removeById(id);

@@ -62,7 +62,7 @@ public class ImUserServiceImpl extends ServiceImpl<ImUserMapper, ImUser> impleme
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void registerUser(ImUser imUser) {
+    public boolean registerUser(ImUser imUser) {
         try {
             save(imUser);
 
@@ -80,7 +80,7 @@ public class ImUserServiceImpl extends ServiceImpl<ImUserMapper, ImUser> impleme
             imChatGroupUser.setUserId(imUser.getId());
             imChatGroupUser.setChatGroupId(defaultChatId);
             imChatGroupUser.setCreateDate(new Date());
-            imChatGroupUserService.save(imChatGroupUser);
+            return imChatGroupUserService.save(imChatGroupUser);
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);

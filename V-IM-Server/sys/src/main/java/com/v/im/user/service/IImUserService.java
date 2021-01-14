@@ -42,5 +42,5 @@ public interface IImUserService extends IService<ImUser> {
      * 注册用户
      * @param imUser 用户对象
      */
-    void registerUser(ImUser imUser);
+    boolean registerUser(ImUser imUser);
 }

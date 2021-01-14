@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -20,7 +21,7 @@ import javax.annotation.Resource;
  * @author 乐天
  * @since 2018-10-07
  */
-@Controller
+@RestController
 public class RegisterController {
 
     @Resource
@@ -35,7 +36,6 @@ public class RegisterController {
      * @param phone    手机
      * @return 结果
      */
-    @ResponseBody
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public boolean register(String name, String password, String phone) {
         if (imUserService.getByLoginName(phone) != null) {
@@ -49,8 +49,7 @@ public class RegisterController {
                 imUser.setMobile(phone);
                 imUser.setName(name);
                 imUser.setAvatar("/img/default-user.png");
-                imUserService.registerUser(imUser);
-                return true;
+                return imUserService.registerUser(imUser);
             } catch (Exception e) {
                 throw new VimException(ResultCodeEnum.SAME_PHONE);
             }

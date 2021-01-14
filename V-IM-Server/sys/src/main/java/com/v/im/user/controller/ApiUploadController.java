@@ -3,10 +3,9 @@ package com.v.im.user.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.v.im.common.utils.ChatUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +19,9 @@ import java.util.UUID;
  * @author 乐天
  * @since 2018-10-07
  */
-@Controller
+@RestController
 @RequestMapping("api")
-public class UploadController {
+public class ApiUploadController {
 
     @Value("${web.upload-path}")
     private String uploadPath;
@@ -35,7 +34,6 @@ public class UploadController {
      * @return json
      */
     @RequestMapping(value = "upload")
-    @ResponseBody
     public String upload(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
         JSONObject json = new JSONObject();
         try {

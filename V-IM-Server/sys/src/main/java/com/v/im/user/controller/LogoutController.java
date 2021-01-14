@@ -5,6 +5,7 @@ import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -14,7 +15,8 @@ import javax.annotation.Resource;
  * @author 乐天
  * @since 2018-10-07
  */
-@Controller
+@RestController
+@RequestMapping("/oauth")
 public class LogoutController {
 
     @Resource
@@ -27,8 +29,7 @@ public class LogoutController {
      * @param access_token token
      * @return json
      */
-    @RequestMapping("/oauth/logout")
-    @ResponseBody
+    @RequestMapping("/logout")
     public boolean revokeToken(String access_token) {
         if (consumerTokenServices.revokeToken(access_token)) {
             return true;
