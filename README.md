@@ -1,6 +1,3 @@
-### 务必记得点赞哦
-### QQ群：617853658 验证请说明 V-IM （并且附上点赞的 gitee 用户名，不点赞不让进哦）
-### Create by  [webstorm and intellij IDEA]
 
 
 ### 结构
@@ -13,6 +10,16 @@
 >   1. 如果出现 Parsing error: x-invalid-end-tag  vue/no-parsing-error 类似的错误，可用用 webstorm 右键src 目录 Fix eslint problems，
 >   2. 安装不成功，请先执行 npm install node-sass。如果还是错误请多重试下！
 
+#### 文档
+> 	1. 打包好的测试文件-->[下载exe安装文件 64位](doc/v-im Setup 0.6.4.exe)。
+>   2. 打包好的web文件，在dist/web 目标下（运行的时候需要有容器，例如nginx tomcat之类的）。
+>   3. 消息推送接口，调用方式：http://localhost:8080/api/user/sendMsg?access_token=你的token&userId=接收人&msg=我是消息
+>   4. 获取token：http://localhost:8080/oauth/token?client_id=v-client&client_secret=v-client-ppp&grant_type=password&scope=select&username=wangwu&password=123456
+>   5. 测试地址：http://localhost:8080   wangwu/123456   zhangsan/123456。
+>   6. 安装依赖命令：yarn 。
+>   7. 开发环境命令：npm run serve 和 npm run electron:serve。
+>   8. 打包安装文件：npm run electron:build，打包完成的文件在/dist_electron 下。
+>   9. 打包web文件：npm run build，打包完成的文件在/dist 下。
 
 ### 注意事项
 
