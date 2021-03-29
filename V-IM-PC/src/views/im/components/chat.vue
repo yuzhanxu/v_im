@@ -17,7 +17,7 @@
             >
               <div class="im-chat-user">
                 <img :src="item.avatar" alt="头像"/>
-                <div class="message-info" v-if="item.mine">
+                <div class="message-info right" v-if="item.mine">
                   <i>
                     <Time :time="item.timestamp"/>
                   </i>
@@ -685,7 +685,14 @@ export default {
           padding-left: 15px;
         }
       }
-
+      .right{
+        right: 0;
+        text-align: right;
+        left: auto;
+        i {
+          padding-right: 15px;
+        }
+      }
       img {
         width: 4rem;
         height: 4rem;
@@ -727,6 +734,10 @@ export default {
             padding-left: 0;
             padding-right: 15px;
           }
+        }
+
+        .message-info {
+          right: 60px !important;
         }
       }
     }
